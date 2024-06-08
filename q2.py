@@ -12,27 +12,21 @@ EXPANSION_P_BOX = [
 
 
 def expand(input_bits):
-    """
-    Expands a 32-bit input block to a 48-bit output block using the DES Expansion P-box.
-    
-    :param input_bits: A string of 32 bits (e.g., '101010...').
-    :return: A string of 48 bits after expansion.
-    """
+
     if len(input_bits) != 32:
         raise ValueError("Input must be a 32-bit binary string")
     
-    # Initialize the output bits list
     output_bits = []
 
-    # Use the expansion P-box to expand the input_bits
+    
     for position in EXPANSION_P_BOX:
-        # Append the bit from the input_bits at the specified position (1-indexed)
+    
         output_bits.append(input_bits[position - 1])
 
-    # Join the list into a single string and return
+
     return ''.join(output_bits)
 
-# Example usage
+
 input_block = '11001100110011001100110011001100'  # Example 32-bit input
 expanded_block = expand(input_block)
 print(f"Input Block (32-bit) : {input_block}")
