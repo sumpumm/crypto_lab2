@@ -33,9 +33,8 @@ def binary_string_to_list(binary_string):
 def list_to_binary_string(bit_list):
     return ''.join(str(bit) for bit in bit_list)
 
-# Example usage
+
 if __name__ == "__main__":
-    # Example 64-bit block
     input_block = '0000000100100011010001010110011110001001101010111100110111101111'  # Example 64-bit binary string
 
     # Convert the binary string to a list of integers
