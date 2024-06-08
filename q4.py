@@ -32,21 +32,20 @@ def key_generation(key):
         1, 2, 2, 2, 2, 2, 2, 1
     ]
     
-    # Step 1: Apply PC-1 permutation
+    
     key_56 = permute(key, PC1)
     
-    # Step 2: Split into two halves
+    
     left_half = key_56[:28]
     right_half = key_56[28:]
     
-    # Generate 16 subkeys
+  
     subkeys = []
     for shift in LEFT_SHIFTS:
-        # Step 3: Left shift both halves
+        
         left_half = left_shift(left_half, shift)
         right_half = left_shift(right_half, shift)
         
-        # Step 4: Combine halves and apply PC-2 permutation
         combined = left_half + right_half
         subkey = permute(combined, PC2)
         subkeys.append(subkey)
@@ -65,17 +64,17 @@ def binary_to_hex(bit_list):
 def list_to_binary_string(bit_list):
     return ''.join(str(bit) for bit in bit_list)
 
-# Example usage
+
 if __name__ == "__main__":
-    # Example 64-bit key in hexadecimal
-    input_key_hex = '133457799BBCDFF1'  # Example 64-bit key in hexadecimal
+  
+    input_key_hex = '133457799BBCDFF1'  
     
-    # Convert the hexadecimal key to a list of bits
+   
     key_bits = hex_to_binary(input_key_hex)
     
-    # Generate subkeys
+
     subkeys = key_generation(key_bits)
     
-    # Print subkeys
+ 
     for i, subkey in enumerate(subkeys):
         print(f"Subkey {i+1:02d}: {list_to_binary_string(subkey)}")
